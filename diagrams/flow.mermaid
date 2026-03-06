@@ -1,8 +1,34 @@
 graph TD
-    A[Inicio Compra] --> B{¿Hay Stock?}
-    B -- No --> C[Mostrar Error "Agotado"]
-    B -- Sí --> D{¿Saldo Suficiente?}
-    D -- No --> E[Pedir otro método de pago]
-    D -- Sí --> F[Restar Stock]
-    F --> G[Generar Factura]
-    G --> H[Fin]
+    %% Nodos
+    Start((Inicio))
+    Login{¿Logueado?}
+    Rol{¿Es Profesor?}
+    
+    subgraph Profesor
+    CreateTask[Crear Tarea]
+    AddRubric[Añadir Rúbrica]
+    Assign[Asignar Alumnos]
+    end
+    
+    subgraph Alumno
+    Dashboard[Ver Tareas Pendientes]
+    EvalForm[Rellenar Evaluación]
+    Submit[Enviar Feedback]
+    end
+    
+    ViewGrades[Ver Nota Final]
+    
+    %% Relaciones
+    Start --> Login
+    Login -- No --> Start
+    Login -- Sí --> Rol
+    
+    Rol -- Sí --> CreateTask
+    CreateTask --> AddRubric
+    AddRubric --> Assign
+    
+    Rol -- No --> Dashboard
+    Assign -.->|Notificación| Dashboard
+    Dashboard --> EvalForm
+    EvalForm --> Submit
+    Submit --> ViewGrades
