@@ -1,0 +1,8 @@
+graph TD
+    A[Inicio Compra] --> B{¿Hay Stock?}
+    B -- No --> C[Mostrar Error "Agotado"]
+    B -- Sí --> D{¿Saldo Suficiente?}
+    D -- No --> E[Pedir otro método de pago]
+    D -- Sí --> F[Restar Stock]
+    F --> G[Generar Factura]
+    G --> H[Fin]

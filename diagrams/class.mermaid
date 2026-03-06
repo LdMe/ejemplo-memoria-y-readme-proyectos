@@ -1,0 +1,39 @@
+classDiagram
+    class User {
+        +UUID id
+        +String email
+        +String passwordHash
+        +Enum role
+        +login()
+        +getAverageScore()
+    }
+
+    class Task {
+        +UUID id
+        +String title
+        +Date deadline
+        +Boolean isActive
+        +assignPeers()
+    }
+
+    class Rubric {
+        +UUID id
+        +JSON criteria
+        +Int maxScore
+    }
+
+    class Evaluation {
+        +UUID id
+        +Float score
+        +String feedback
+        +Date submittedAt
+        +calculateWeightedScore()
+    }
+
+    %% Relaciones
+    User "1" --> "*" Task : Crea (Profesor)
+    User "1" --> "*" Evaluation : Realiza (Evaluador)
+    User "1" -- "*" Evaluation : Recibe (Evaluado)
+    
+    Task "1" *-- "1" Rubric : Tiene
+    Task "1" *-- "*" Evaluation : Contiene

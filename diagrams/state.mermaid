@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Nueva
+    Nueva --> EnRevision: Técnico asignado
+    EnRevision --> Resuelta: Solución aplicada
+    EnRevision --> Bloqueada: Falta info
+    Bloqueada --> EnRevision: Info recibida
+    Resuelta --> [*]

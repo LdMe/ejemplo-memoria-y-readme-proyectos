@@ -1,0 +1,19 @@
+gitGraph
+    commit id: "Initial Commit"
+    branch develop
+    checkout develop
+    commit id: "Setup Project"
+    branch feat/login
+    checkout feat/login
+    commit id: "UI Login"
+    commit id: "API Auth"
+    checkout develop
+    merge feat/login
+    branch feat/dashboard
+    checkout feat/dashboard
+    commit id: "Create Navbar"
+    commit id: "Load Data"
+    checkout develop
+    merge feat/dashboard
+    checkout main
+    merge develop tag: "v1.0.0"

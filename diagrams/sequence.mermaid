@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant U as Usuario
+    participant F as Frontend
+    participant A as API
+    participant D as DB
+
+    U->>F: Rellena formulario registro
+    F->>A: POST /register (datos)
+    activate A
+    A->>D: ¿Existe el email?
+    D-->>A: No (False)
+    A->>A: Hashear contraseña (Bcrypt)
+    A->>D: INSERT nuevo usuario
+    D-->>A: OK (ID: 123)
+    A-->>F: 201 Created + Token
+    deactivate A
+    F-->>U: Redirige al Home

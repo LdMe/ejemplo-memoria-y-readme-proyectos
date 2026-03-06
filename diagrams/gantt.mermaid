@@ -1,0 +1,22 @@
+gantt
+    title Cronograma de Desarrollo - Evaluat.io
+    dateFormat  YYYY-MM-DD
+    axisFormat  %d/%m
+    
+    section Diseño
+    Definición de Requisitos   :done, des1, 2023-10-02, 1d
+    Diseño DB y API            :done, des2, 2023-10-03, 1d
+    
+    section Backend
+    Configuración Server       :active, back1, 2023-10-03, 1d
+    Endpoints Auth & Users     :back2, after des2, 2d
+    Lógica de Evaluaciones     :crit, back3, after back2, 3d
+    
+    section Frontend
+    Maquetación Base (UI)      :front1, after des2, 2d
+    Integración con API        :front2, after back2, 3d
+    Dashboard de Notas         :front3, after back3, 2d
+    
+    section Cierre
+    Testing y Refactor         :final1, 2023-10-12, 2d
+    Redacción Memoria          :final2, 2023-10-13, 1d
